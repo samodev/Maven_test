@@ -1,0 +1,24 @@
+<settings>
+	<mirrors>
+                <mirror>
+                        <id>artifactory</id>
+                        <mirrorOf>*</mirrorOf>
+                        <url>http://localhost:8083/artifactory/Maven-central/</url>
+			<name>Artifactory</name>
+                </mirror>
+
+	</mirrors>
+	<servers>
+                <server>
+                        <id>artifactory</id>
+                        <username>deploy</username>
+                        <password>lm172505</password>
+                </server>
+                <server>
+                        <id>central</id>
+                        <username>admin</username>
+                        <password>AP5XP3WKthisdM3AkLSAYdw4vZ4</password>
+                </server>
+
+  	</servers>
+ </settings>
