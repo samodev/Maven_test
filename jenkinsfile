@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+    stages {
+        stage('Etape 1') {
+            steps {
+                git ([url: "https://github.com/samodev/Maven_test.git", branch: 'master'])
+            }
+        }
+        stage('Etape 2') {
+            steps {
+                sh "/opt/apache-maven-3.5.4/bin/mvn clean"
+            }
+        }
+        stage('Etape 3') {
+            steps {
+                script {
+                    try {
+                        sh "/opt/apache-maven-3.5.4/bin/mvn test"
+                    }
+                    catch(e) {
+                        echo "Maven test failed >> fail.log"
+                        currentBuild.result="FAILED"
+                    }
+                }   
+            }
+
+        }
+	stage('Etape 4') {
+	    steps {
+		sh "/opt/apache-maven-3.5.4/bin/mvn build"
+	    }
+	}('Etape 5') {
+	    steps {
+		sh "/opt/apache-maven-3.5.4/bin/mvn deploy"
+		}
+	} 
+    }
+}
