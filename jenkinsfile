@@ -27,7 +27,7 @@ pipeline {
         }
 	stage('Etape 4') {
 	    steps {
-		sh "/opt/apache-maven-3.5.4/bin/mvn build"
+		sh "/opt/apache-maven-3.5.4/bin/mvn package"
 	    }
 	}
 	stage('Etape 5') {
