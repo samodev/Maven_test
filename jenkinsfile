@@ -35,7 +35,7 @@ pipeline {
 		sh "/opt/apache-maven-3.5.4/bin/mvn deploy"
 		}
 	}
-	stage('condition d'\affichage') {
+	stage("condition d'affichage") {
 	    steps {
 	    	if (env.BRANCH_NAME =~ /^feature\/.*$/) { echo "je suis dans une branche feature" }
 		if (env.BRANCH_NAME == 'develop') { echo "je suis dans une branche develop" }
