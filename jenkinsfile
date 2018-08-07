@@ -37,8 +37,10 @@ pipeline {
 	}
         stage("condition d'affichage") {
             steps {
+		script {
                 if (env.BRANCH_NAME =~ /^feature\/.*$/) { echo "je suis dans une branche feature" }
                 if (env.BRANCH_NAME == 'develop') { echo "je suis dans une branche develop" }
+		}
             }
         }
 
