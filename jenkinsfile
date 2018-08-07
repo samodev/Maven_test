@@ -1,17 +1,17 @@
 pipeline {
     agent any
     stages {
-        stage('Etape 1') {
+        stage('Git Clone') {
             steps {
                 git ([url: "https://github.com/samodev/Maven_test.git", branch: 'master'])
             }
         }
-        stage('Etape 2') {
+        stage('Maven Clean') {
             steps {
                 sh "/opt/apache-maven-3.5.4/bin/mvn clean"
             }
         }
-        stage('Etape 3') {
+        stage('Maven Test') {
             steps {
                 script {
                     try {
@@ -25,12 +25,12 @@ pipeline {
             }
 
         }
-	stage('Etape 4') {
+	stage('Maven Build') {
 	    steps {
 		sh "/opt/apache-maven-3.5.4/bin/mvn package"
 	    }
 	}
-	stage('Etape 5') {
+	stage('Maven Deploy') {
 	    steps {
 		sh "/opt/apache-maven-3.5.4/bin/mvn deploy"
 		}
