@@ -34,6 +34,13 @@ pipeline {
 	    steps {
 		sh "/opt/apache-maven-3.5.4/bin/mvn deploy"
 		}
-	} 
+	}
+	stage('clean Workspace') {
+	    post { 
+        	always { 
+            	    cleanWs()
+        	}
+    	    }
+	}
     }
 }
